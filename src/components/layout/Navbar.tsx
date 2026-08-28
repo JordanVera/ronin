@@ -54,7 +54,7 @@ export default function Navbar() {
           />
         </Link>
 
-        <div className="hidden items-center gap-1 lg:flex">
+        <div className="hidden items-center gap-1 xl:flex">
           {NAV_LINKS.map((link) => {
             const isActive =
               pathname === link.href ||
@@ -99,7 +99,7 @@ export default function Navbar() {
             type="button"
             aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
             onClick={() => setMobileOpen((value) => !value)}
-            className="flex h-9 w-9 items-center justify-center rounded-full text-white lg:hidden"
+            className="flex h-9 w-9 items-center justify-center rounded-full text-white xl:hidden"
           >
             {mobileOpen ? (
               <X className="h-5 w-5" />
@@ -118,7 +118,7 @@ export default function Navbar() {
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.18 }}
             className={cn(
-              'mx-auto mt-2 overflow-hidden rounded-3xl border border-white/20 bg-[#302c2c] p-4 shadow-xl lg:hidden',
+              'mx-auto mt-2 overflow-hidden rounded-3xl border border-white/20 bg-[#302c2c] p-4 shadow-xl xl:hidden',
               scrolled || mobileOpen ? 'max-w-5xl' : 'max-w-6xl',
             )}
           >

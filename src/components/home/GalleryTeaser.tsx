@@ -7,9 +7,13 @@ import { GALLERY_IMAGES } from '@/lib/data';
 import { ArrowRight } from 'lucide-react';
 
 export default function GalleryTeaser() {
-  const images = GALLERY_IMAGES.filter(
-    (img) => 'featured' in img && img.featured,
-  );
+  const harrisburg = GALLERY_IMAGES.filter(
+    (img) => img.location === 'harrisburg' && img.featured,
+  ).slice(0, 3);
+  const ronin2 = GALLERY_IMAGES.filter(
+    (img) => img.location === 'ronin-2' && img.featured,
+  ).slice(0, 3);
+  const images = [...harrisburg, ...ronin2];
 
   return (
     <section className="py-24 px-6 lg:px-8 bg-background">
@@ -22,7 +26,7 @@ export default function GalleryTeaser() {
               viewport={{ once: true }}
               className="text-[#f45235] text-[10px] tracking-[0.35em] uppercase mb-3"
             >
-              Our Space
+              Our Spaces
             </motion.p>
             <motion.h2
               initial={{ opacity: 0, y: 20 }}

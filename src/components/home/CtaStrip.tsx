@@ -11,7 +11,7 @@ export default function CtaStrip() {
     <section className="relative overflow-hidden py-24 px-6 lg:px-8">
       <Image
         src="/gallery/gallery-12.jpeg"
-        alt="Tables set for a celebration at Charming Occasions"
+        alt="Celebration at Ronin Art House"
         fill
         className="object-cover object-center"
         sizes="100vw"
@@ -42,8 +42,8 @@ export default function CtaStrip() {
           transition={{ delay: 0.2 }}
           className="mx-auto mb-10 max-w-xl text-base text-white/75 sm:text-lg"
         >
-          Text us to schedule a tour or inquire about availability. We&apos;d
-          love to host your next shower or celebration.
+          Text us to schedule a tour of Ronin Harrisburg or Ronin 2. We&apos;d
+          love to host your next wedding, event, or celebration.
         </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 16 }}

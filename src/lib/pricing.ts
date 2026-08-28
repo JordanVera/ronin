@@ -1,3 +1,5 @@
+import { LOCATIONS } from './locations';
+
 export type RateCell = {
   price: number | null;
   additionalHour: number | null;
@@ -15,49 +17,27 @@ export const PACKAGE_TYPES = [
   {
     id: 'partial',
     name: 'Partial Day',
-    duration: '8 Hours',
-    startingPrice: 2300,
+    duration: '6–8 Hours',
+    startingPrice: 1350,
   },
   {
     id: 'full',
     name: 'Full Day',
     duration: '10am – 12am',
-    startingPrice: 3375,
+    startingPrice: 2000,
     highlighted: true,
   },
 ] as const;
 
-export const PRICING_TIERS: PricingTier[] = [
-  {
-    id: 'weekday',
-    label: 'Monday–Thursday',
-    partial: { price: 2300, additionalHour: 250 },
-    full: { price: 3375, additionalHour: 225 },
-  },
-  {
-    id: 'fri-sun',
-    label: 'Friday / Sunday',
-    partial: { price: 3500, additionalHour: 375 },
-    full: { price: 4350, additionalHour: 300 },
-  },
-  {
-    id: 'saturday',
-    label: 'Saturday',
-    partial: {
-      price: null,
-      additionalHour: null,
-      note: 'Partial day booking upon request, pricing may vary',
-    },
-    full: { price: 5300, additionalHour: 375 },
-  },
-];
+export const PRICING_TIERS: PricingTier[] = LOCATIONS[0].pricingTiers;
 
 export const PRICING_NOTES = [
-  'Partial Day rentals include 8 hours of venue access.',
-  'Full Day rentals run 10am – 12am.',
-  'Additional hours billed at the listed overage rate for your day of week.',
-  'Capacity up to 150 standing / 120 seated depending on layout.',
-  'Contact us to schedule a tour and confirm availability.',
+  'Two Houston locations with different capacities and packages.',
+  'Ronin Harrisburg: Partial Day (8 hours) and Full Day (10am–12am).',
+  'Ronin 2: Partial Day (6 hours) and Full Day (10am–12am).',
+  'A refundable security deposit is charged for all rentals.',
+  'You must be 25 or older to book either venue.',
+  'Pricing may vary for holidays, holiday weekends, and peak season.',
 ];
 
 export function formatPrice(amount: number) {

@@ -10,15 +10,14 @@ import {
   useTransform,
 } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
-import { COMPANY } from '@/lib/data';
 
 const SLIDE_DURATION_MS = 7000;
 
 const HERO_SLIDES = [
-  { src: '/hero.jpg', alt: 'Venue hero' },
-  { src: '/gallery/gallery-02.jpg', alt: 'Ronin Harrisburg venue photo 2' },
-  { src: '/gallery/gallery-03.jpg', alt: 'Ronin Harrisburg venue photo 3' },
-  { src: '/gallery/gallery-04.jpg', alt: 'Ronin Harrisburg venue photo 4' },
+  { src: '/hero.jpg', alt: 'Ronin Harrisburg' },
+  { src: '/gallery/ronin-2/venue-01.jpg', alt: 'Ronin 2 venue' },
+  { src: '/gallery/gallery-02.jpg', alt: 'Ronin Harrisburg venue' },
+  { src: '/gallery/ronin-2/venue-03.jpg', alt: 'Ronin 2 patio' },
 ] as const;
 
 export default function Hero() {
@@ -42,7 +41,10 @@ export default function Hero() {
   const slide = HERO_SLIDES[currentIndex];
 
   return (
-    <section ref={ref} className="relative h-screen min-h-[600px] overflow-hidden">
+    <section
+      ref={ref}
+      className="relative h-screen min-h-[600px] overflow-hidden"
+    >
       <motion.div style={{ y }} className="absolute inset-0">
         <AnimatePresence mode="sync">
           <motion.div
@@ -79,7 +81,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="text-[#f45235] text-xs tracking-[0.4em] uppercase mb-6"
         >
-          Houston, Texas · Up to {COMPANY.maxGuests} Guests
+          Houston, Texas · Two Immersive Venues
         </motion.p>
 
         <motion.h1
@@ -88,7 +90,8 @@ export default function Hero() {
           transition={{ duration: 0.9, delay: 0.35 }}
           className="font-serif text-white text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[1.05] tracking-tight max-w-4xl"
         >
-          Immersive Art Gallery Venue <em className="italic text-[#f45235]">Ronin Harrisburg</em>
+          An Immersive Venue Experience by{' '}
+          <em className="italic text-[#f45235]">Ronin Art House</em>
         </motion.h1>
 
         <motion.p
@@ -97,7 +100,8 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.55 }}
           className="mt-6 text-white/75 text-base sm:text-lg max-w-xl leading-relaxed"
         >
-          Ronin Harrisburg combines an industrial aesthetic with a sophisticated edge — 4,400 sq ft of chic, modern event space in Houston\'s East End.
+          One brand, two Houston venues — Ronin Harrisburg in the East End and
+          Ronin 2 in the Downtown Warehouse District.
         </motion.p>
 
         <motion.div
@@ -113,10 +117,10 @@ export default function Hero() {
             Book a Tour
           </Link>
           <Link
-            href="/pricing"
+            href="/locations"
             className="px-8 py-3.5 border border-white/50 text-white text-xs tracking-[0.2em] uppercase hover:border-[#f45235] hover:text-[#f45235] transition-all duration-200"
           >
-            View Pricing
+            View Locations
           </Link>
         </motion.div>
       </motion.div>

@@ -3,11 +3,12 @@ import Image from 'next/image';
 import { Phone, MapPin, Camera, Globe, Clock, Mail } from 'lucide-react';
 import InquiryForm from '@/components/contact/InquiryForm';
 import { COMPANY } from '@/lib/data';
+import { LOCATIONS } from '@/lib/locations';
 
 export const metadata: Metadata = {
   title: `Contact | ${COMPANY.name}`,
   description:
-    'Contact Charming Occasions to book a tour or inquire about venue availability and packages in Webster, TX.',
+    'Contact Ronin Art House to book a tour or inquire about Ronin Harrisburg or Ronin 2 in Houston.',
 };
 
 export default function ContactPage() {
@@ -15,8 +16,8 @@ export default function ContactPage() {
     <>
       <section className="relative h-64 sm:h-80 overflow-hidden">
         <Image
-          src="/gallery/gallery-08.jpeg"
-          alt="Contact Charming Occasions"
+          src="/gallery/gallery-08.jpg"
+          alt="Contact Ronin Art House"
           fill
           priority
           className="object-cover object-center"
@@ -41,7 +42,7 @@ export default function ContactPage() {
               </h2>
               <p className="text-foreground/60 mt-4 leading-relaxed">
                 Text us or fill out the form to inquire about availability, tour
-                our venue, and receive our pricing guide.
+                either venue, and receive pricing for your date.
               </p>
             </div>
 
@@ -68,15 +69,23 @@ export default function ContactPage() {
                   </div>
                 </a>
               </li>
-              <li className="flex items-start gap-4">
-                <div className="w-10 h-10 border border-[#f45235]/30 flex items-center justify-center flex-shrink-0">
-                  <MapPin size={14} className="text-[#f45235]" />
-                </div>
-                <div>
-                  <p className="text-[10px] tracking-[0.2em] uppercase text-foreground/40 mb-0.5">Location</p>
-                  <p className="text-foreground">{COMPANY.address}<br />{COMPANY.city}</p>
-                </div>
-              </li>
+              {LOCATIONS.map((location) => (
+                <li key={location.slug} className="flex items-start gap-4">
+                  <div className="w-10 h-10 border border-[#f45235]/30 flex items-center justify-center flex-shrink-0">
+                    <MapPin size={14} className="text-[#f45235]" />
+                  </div>
+                  <div>
+                    <p className="text-[10px] tracking-[0.2em] uppercase text-foreground/40 mb-0.5">
+                      {location.name}
+                    </p>
+                    <p className="text-foreground">
+                      {location.address}
+                      <br />
+                      {location.city}
+                    </p>
+                  </div>
+                </li>
+              ))}
               <li className="flex items-start gap-4">
                 <div className="w-10 h-10 border border-[#f45235]/30 flex items-center justify-center flex-shrink-0">
                   <Clock size={14} className="text-[#f45235]" />

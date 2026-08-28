@@ -24,13 +24,8 @@ export default function GalleryGrid({
 
   const filtered = useMemo(() => {
     if (category === "all") return GALLERY_IMAGES;
-    return GALLERY_IMAGES.filter((img) => img.category === category);
+    return GALLERY_IMAGES.filter((img) => img.location === category);
   }, [category]);
-
-  const labelFor = (img: (typeof GALLERY_IMAGES)[number]) => {
-    const match = GALLERY_CATEGORIES.find((c) => c.id === img.category);
-    return match?.label ?? img.category;
-  };
 
   const close = () => setSelected(null);
   const prev = () =>

@@ -20,16 +20,19 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: 'Ronin Harrisburg — Houston Event Venue',
+  title: 'Ronin Art House — Houston Event Venues',
   description:
-    'All-inclusive intimate event venue in Webster, Texas. Bridal showers, baby showers, and celebrations for up to 65 guests.',
+    'Two immersive Houston event venues: Ronin Harrisburg in the East End and Ronin 2 in the Downtown Warehouse District.',
   keywords:
-    'Ronin Harrisburg, event venue Webster TX, bridal shower venue Houston, baby shower venue Bay Area Houston',
+    'Ronin Art House, Ronin Harrisburg, Ronin 2, Houston event venue, warehouse district wedding venue, East End Houston venue',
   openGraph: {
     title: `${COMPANY.name} | ${COMPANY.tagline}`,
     description:
-      'Premier intimate event venue on NASA Parkway — all-inclusive packages for showers and celebrations.',
+      'One brand, two Houston venues — industrial-chic spaces for weddings, events, and celebrations.',
     type: 'website',
+  },
+  icons: {
+    icon: '/favicon.ico',
   },
 };
 
@@ -43,6 +46,10 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${playfair.variable} h-full antialiased`}
     >
+      <head>
+        {/* The favicon will be injected automatically via metadata, but in case you want to add manually: */}
+        <link rel="icon" href="/favicon.ico" />
+      </head>
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <Navbar />
         <main className="flex-1">{children}</main>

@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ABOUT_CONTENT, COMPANY, VENUE_HIGHLIGHTS } from '@/lib/data';
+import { ABOUT_CONTENT, COMPANY } from '@/lib/data';
 
 const anim = (delay: number) => ({
   initial: { opacity: 0, y: 32 },
@@ -42,7 +42,7 @@ export default function Welcome() {
             </motion.p>
             <motion.div {...anim(0.4)} className="flex gap-8 pt-4 border-t border-border">
               {[
-                { number: `${COMPANY.maxGuests}`, label: 'Max Guests' },
+                { number: '2', label: 'Houston Venues' },
                 { number: `${COMPANY.googleRating}★`, label: 'Google Rating' },
                 { number: `${COMPANY.reviewCount}+`, label: 'Reviews' },
               ].map((stat) => (
@@ -54,26 +54,13 @@ export default function Welcome() {
             </motion.div>
             <motion.div {...anim(0.5)}>
               <Link
-                href="/about"
+                href="/locations"
                 className="inline-flex items-center text-[#f45235] text-xs tracking-[0.2em] uppercase hover:underline underline-offset-4"
               >
-                Learn More About Our Venue
+                Explore Our Locations
               </Link>
             </motion.div>
           </div>
-        </div>
-
-        <div className="grid sm:grid-cols-2 gap-6 mt-20">
-          {VENUE_HIGHLIGHTS.map((item, i) => (
-            <motion.div
-              key={item.title}
-              {...anim(0.1 * i)}
-              className="border border-border p-6"
-            >
-              <h3 className="font-serif text-xl text-foreground mb-2">{item.title}</h3>
-              <p className="text-sm text-foreground/60 leading-relaxed">{item.description}</p>
-            </motion.div>
-          ))}
         </div>
       </div>
     </section>

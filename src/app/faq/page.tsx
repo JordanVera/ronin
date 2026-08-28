@@ -7,7 +7,7 @@ import { COMPANY, FAQS } from '@/lib/data';
 export const metadata: Metadata = {
   title: `FAQ | ${COMPANY.name}`,
   description:
-    'Frequently asked questions about Charming Occasions — packages, catering, alcohol policy, reservations, and touring the venue in Webster, TX.',
+    'Frequently asked questions about Ronin Art House — two Houston venues, packages, catering, alcohol policy, and touring the spaces.',
 };
 
 const faqSchema = {
@@ -34,7 +34,7 @@ export default function FaqPage() {
       <section className="relative h-64 overflow-hidden sm:h-80">
         <Image
           src="/gallery/gallery-10.jpeg"
-          alt="Charming Occasions frequently asked questions"
+          alt="Ronin Art House frequently asked questions"
           fill
           priority
           className="object-cover object-center"
@@ -52,8 +52,8 @@ export default function FaqPage() {
       <section className="mx-auto max-w-3xl px-6 py-20 lg:px-8">
         <div className="mb-12 text-center">
           <p className="text-base leading-relaxed text-foreground/65 sm:text-lg">
-            Everything you need to know about hosting your celebration at
-            Charming Occasions — from packages and catering to booking a tour.
+            Everything you need to know about hosting at Ronin Harrisburg or
+            Ronin 2 — from packages and catering to booking a tour.
           </p>
         </div>
         <FaqAccordion />

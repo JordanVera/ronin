@@ -4,7 +4,7 @@ import { COMPANY } from '@/lib/data';
 
 export const metadata: Metadata = {
   title: `Thank You | ${COMPANY.name}`,
-  description: 'Thank you for contacting Charming Occasions.',
+  description: 'Thank you for contacting Ronin Art House.',
   robots: { index: false },
 };
 

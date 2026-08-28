@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Phone, MapPin, Mail } from 'lucide-react';
 import { NAV_LINKS, COMPANY } from '@/lib/data';
+import { LOCATIONS } from '@/lib/locations';
 import SocialLinks from '@/components/layout/SocialLinks';
 
 export default function Footer() {
@@ -20,9 +21,8 @@ export default function Footer() {
               />
             </Link>
             <p className="max-w-xs text-sm leading-relaxed">
-              All-inclusive intimate event venue in Webster, Texas — bridal
-              showers, baby showers, and celebrations for up to{' '}
-              {COMPANY.maxGuests} guests.
+              Two immersive Houston event venues — Ronin Harrisburg in the East
+              End and Ronin 2 in the Downtown Warehouse District.
             </p>
             <SocialLinks linkClassName="text-white/80 hover:text-white" />
           </div>
@@ -68,14 +68,17 @@ export default function Footer() {
                   {COMPANY.email}
                 </a>
               </li>
-              <li className="flex items-start gap-3">
-                <MapPin size={14} className="mt-0.5 shrink-0 text-white" />
-                <span>
-                  {COMPANY.address}
-                  <br />
-                  {COMPANY.city}
-                </span>
-              </li>
+              {LOCATIONS.map((location) => (
+                <li key={location.slug} className="flex items-start gap-3">
+                  <MapPin size={14} className="mt-0.5 shrink-0 text-white" />
+                  <span>
+                    <span className="block text-white">{location.name}</span>
+                    {location.address}
+                    <br />
+                    {location.city}
+                  </span>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
