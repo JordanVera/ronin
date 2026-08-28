@@ -14,10 +14,17 @@ import { ChevronDown } from 'lucide-react';
 const SLIDE_DURATION_MS = 7000;
 
 const HERO_SLIDES = [
-  { src: '/hero.jpg', alt: 'Ronin Harrisburg' },
+  // { src: '/hero.jpg', alt: 'Ronin Harrisburg' },
+  {
+    src: '/gallery/harrisburg-events/event-07.jpeg',
+    alt: 'Ronin Harrisburg venue',
+  },
   { src: '/gallery/ronin-2/venue-01.jpg', alt: 'Ronin 2 venue' },
-  { src: '/gallery/gallery-02.jpg', alt: 'Ronin Harrisburg venue' },
   { src: '/gallery/ronin-2/venue-03.jpg', alt: 'Ronin 2 patio' },
+  {
+    src: '/gallery/harrisburg-events/event-05.jpeg',
+    alt: 'Ronin Harrisburg venue',
+  },
 ] as const;
 
 export default function Hero() {
@@ -88,10 +95,10 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.35 }}
-          className="font-serif text-white text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[1.05] tracking-tight max-w-4xl"
+          className="font-serif text-white text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[1.05] tracking-tight max-w-5xl"
         >
-          An Immersive Venue Experience by{' '}
-          <em className="italic text-[#f45235]">Ronin Art House</em>
+          Ronin Harrisburg <em className="italic text-[#f45235]">&amp;</em>{' '}
+          Ronin 2
         </motion.h1>
 
         <motion.p
@@ -100,8 +107,8 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.55 }}
           className="mt-6 text-white/75 text-base sm:text-lg max-w-xl leading-relaxed"
         >
-          One brand, two Houston venues — Ronin Harrisburg in the East End and
-          Ronin 2 in the Downtown Warehouse District.
+          East End and the Downtown Warehouse District — two industrial-chic
+          gallery venues for weddings, events, and celebrations.
         </motion.p>
 
         <motion.div
@@ -111,16 +118,16 @@ export default function Hero() {
           className="mt-10 flex flex-col sm:flex-row gap-4"
         >
           <Link
-            href="/contact"
+            href="/locations/ronin-harrisburg"
             className="px-8 py-3.5 bg-[#f45235] text-white text-xs tracking-[0.2em] uppercase font-medium hover:bg-[#d93d20] transition-colors duration-200"
           >
-            Book a Tour
+            Ronin Harrisburg
           </Link>
           <Link
-            href="/locations"
+            href="/locations/ronin-2"
             className="px-8 py-3.5 border border-white/50 text-white text-xs tracking-[0.2em] uppercase hover:border-[#f45235] hover:text-[#f45235] transition-all duration-200"
           >
-            View Locations
+            Ronin 2
           </Link>
         </motion.div>
       </motion.div>

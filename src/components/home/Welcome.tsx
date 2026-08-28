@@ -54,10 +54,10 @@ export default function Welcome() {
             </motion.div>
             <motion.div {...anim(0.5)}>
               <Link
-                href="/locations"
+                href="/locations/ronin-harrisburg"
                 className="inline-flex items-center text-[#f45235] text-xs tracking-[0.2em] uppercase hover:underline underline-offset-4"
               >
-                Explore Our Locations
+                Explore Our Venues
               </Link>
             </motion.div>
           </div>

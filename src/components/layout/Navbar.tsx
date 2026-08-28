@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Phone } from 'lucide-react';
+import { ChevronDown, Menu, X, Phone } from 'lucide-react';
 import { NAV_LINKS, COMPANY } from '@/lib/data';
 import { cn } from '@/lib/utils';
 import SocialLinks from '@/components/layout/SocialLinks';
@@ -13,6 +13,7 @@ import SocialLinks from '@/components/layout/SocialLinks';
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [venuesOpen, setVenuesOpen] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -24,6 +25,7 @@ export default function Navbar() {
 
   useEffect(() => {
     setMobileOpen(false);
+    setVenuesOpen(false);
   }, [pathname]);
 
   useEffect(() => {
@@ -32,6 +34,8 @@ export default function Navbar() {
       document.body.style.overflow = '';
     };
   }, [mobileOpen]);
+
+  const venuesActive = pathname.startsWith('/locations/');
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-4 pt-3 sm:pt-4">
@@ -56,6 +60,76 @@ export default function Navbar() {
 
         <div className="hidden items-center gap-1 xl:flex">
           {NAV_LINKS.map((link) => {
+            if (link.children) {
+              return (
+                <div
+                  key={link.label}
+                  className="relative"
+                  onMouseEnter={() => setVenuesOpen(true)}
+                  onMouseLeave={() => setVenuesOpen(false)}
+                >
+                  <button
+                    type="button"
+                    aria-expanded={venuesOpen}
+                    aria-haspopup="true"
+                    className={cn(
+                      'group relative flex items-center gap-1 rounded-full px-2.5 py-1.5 text-[11px] font-medium tracking-widest uppercase transition-colors xl:px-3',
+                      venuesActive ? 'text-white' : 'text-white/80 hover:text-white',
+                    )}
+                    onClick={() => setVenuesOpen((open) => !open)}
+                  >
+                    {link.label}
+                    <ChevronDown
+                      size={12}
+                      className={cn(
+                        'transition-transform duration-200',
+                        venuesOpen ? 'rotate-180' : '',
+                      )}
+                    />
+                    <span
+                      className={cn(
+                        'absolute inset-x-3.5 -bottom-0.5 h-px bg-white transition-transform duration-300',
+                        venuesActive || venuesOpen
+                          ? 'scale-x-100'
+                          : 'scale-x-0 group-hover:scale-x-100',
+                      )}
+                    />
+                  </button>
+                  <AnimatePresence>
+                    {venuesOpen ? (
+                      <motion.div
+                        initial={{ opacity: 0, y: 6 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 6 }}
+                        transition={{ duration: 0.16 }}
+                        className="absolute left-1/2 top-full z-50 w-56 -translate-x-1/2 pt-3"
+                      >
+                        <div className="overflow-hidden rounded-2xl border border-white/15 bg-[#302c2c] py-2 shadow-xl">
+                          {link.children.map((child) => {
+                            const childActive = pathname === child.href;
+                            return (
+                              <Link
+                                key={child.href}
+                                href={child.href}
+                                className={cn(
+                                  'block px-4 py-2.5 text-[11px] font-medium tracking-widest uppercase transition-colors',
+                                  childActive
+                                    ? 'text-white'
+                                    : 'text-white/75 hover:bg-white/10 hover:text-white',
+                                )}
+                              >
+                                {child.label}
+                              </Link>
+                            );
+                          })}
+                        </div>
+                      </motion.div>
+                    ) : null}
+                  </AnimatePresence>
+                </div>
+              );
+            }
+
             const isActive =
               pathname === link.href ||
               (link.href !== '/' && pathname.startsWith(`${link.href}/`));
@@ -63,7 +137,7 @@ export default function Navbar() {
             return (
               <Link
                 key={link.href}
-                href={link.href}
+                href={link.href!}
                 className={cn(
                   'group relative rounded-full px-2.5 py-1.5 text-[11px] font-medium tracking-widest uppercase transition-colors xl:px-3',
                   isActive ? 'text-white' : 'text-white/80 hover:text-white',
@@ -124,11 +198,39 @@ export default function Navbar() {
           >
             <div className="flex flex-col">
               {NAV_LINKS.map((link) => {
+                if (link.children) {
+                  return (
+                    <div key={link.label} className="py-1">
+                      <p className="px-3 py-2 text-[10px] tracking-[0.2em] text-white/40 uppercase">
+                        {link.label}
+                      </p>
+                      {link.children.map((child) => {
+                        const isActive = pathname === child.href;
+                        return (
+                          <Link
+                            key={child.href}
+                            href={child.href}
+                            onClick={() => setMobileOpen(false)}
+                            className={cn(
+                              'block rounded-xl px-3 py-2.5 text-sm font-medium transition hover:bg-white/10',
+                              isActive
+                                ? 'text-white'
+                                : 'text-white/80 hover:text-white',
+                            )}
+                          >
+                            {child.label}
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  );
+                }
+
                 const isActive = pathname === link.href;
                 return (
                   <Link
                     key={link.href}
-                    href={link.href}
+                    href={link.href!}
                     onClick={() => setMobileOpen(false)}
                     className={cn(
                       'rounded-xl px-3 py-2.5 text-sm font-medium transition hover:bg-white/10',

@@ -18,7 +18,7 @@ export default function LocationsPreview() {
             viewport={{ once: true }}
             className="mb-4 text-[10px] tracking-[0.35em] text-[#f45235] uppercase"
           >
-            Featured Locations
+            Featured Venues
           </motion.p>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}

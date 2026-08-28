@@ -10,6 +10,15 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: "/locations",
+        destination: "/locations/ronin-harrisburg",
+        permanent: false,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

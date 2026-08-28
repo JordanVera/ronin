@@ -15,7 +15,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const location = getLocation(slug);
-  if (!location) return { title: `Locations | ${COMPANY.name}` };
+  if (!location) return { title: `Venues | ${COMPANY.name}` };
 
   return {
     title: `${location.name} | ${COMPANY.name}`,

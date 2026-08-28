@@ -7,7 +7,7 @@ import SocialLinks from '@/components/layout/SocialLinks';
 
 export default function Footer() {
   return (
-    <footer className="bg-primary text-white/80">
+    <footer className="bg-black text-white/80">
       <div className="mx-auto max-w-7xl px-6 pt-16 pb-8 lg:px-8">
         <div className="mb-12 grid grid-cols-1 gap-12 md:grid-cols-3">
           <div className="flex flex-col gap-4">
@@ -32,7 +32,14 @@ export default function Footer() {
               Navigation
             </h4>
             <ul className="flex flex-col gap-3">
-              {NAV_LINKS.map((link) => (
+              {NAV_LINKS.flatMap((link) =>
+                link.children
+                  ? link.children.map((child) => ({
+                      label: child.label,
+                      href: child.href,
+                    }))
+                  : [{ label: link.label, href: link.href! }],
+              ).map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}

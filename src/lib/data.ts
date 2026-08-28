@@ -24,14 +24,25 @@ export const COMPANY = {
 export const ACCENT = '#f45235';
 export const ACCENT_HOVER = '#d93d20';
 
-export const NAV_LINKS = [
+export type NavLink = {
+  label: string;
+  href?: string;
+  children?: { label: string; href: string }[];
+};
+
+export const NAV_LINKS: NavLink[] = [
   { label: 'Home', href: '/' },
-  { label: 'Locations', href: '/locations' },
+  {
+    label: 'Venues',
+    children: [
+      { label: 'Ronin Harrisburg', href: '/locations/ronin-harrisburg' },
+      { label: 'Ronin 2', href: '/locations/ronin-2' },
+    ],
+  },
   { label: 'About', href: '/about' },
   { label: 'Gallery', href: '/gallery' },
   { label: 'Videos', href: '/videos' },
   { label: 'Reviews', href: '/reviews' },
-  // { label: 'FAQ', href: '/faq' },
   { label: 'Contact', href: '/contact' },
 ];
 
@@ -129,7 +140,6 @@ export const FAQS: FaqItem[] = [
     question: 'How many locations do you have?',
     answer:
       'Two Houston venues: Ronin Harrisburg at 3501 Harrisburg Blvd (up to 150 standing / 120 seated) and Ronin 2 at 1315 Sterrett St (up to 75 standing / 45–50 seated).',
-    link: { href: '/locations', label: 'Compare locations' },
   },
   {
     question: 'What are your rental rates?',

@@ -97,10 +97,10 @@ export default function AboutPage() {
 
       <section className="py-16 px-6 text-center">
         <Link
-          href="/locations"
+          href="/contact"
           className="inline-flex items-center gap-2 text-[#f45235] text-xs tracking-[0.2em] uppercase hover:gap-3 transition-all"
         >
-          Compare Locations <ArrowRight size={12} />
+          Inquire About a Venue <ArrowRight size={12} />
         </Link>
       </section>
 
